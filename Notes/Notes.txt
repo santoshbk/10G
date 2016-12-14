@@ -1,0 +1,6 @@
+Notes:
+
+Comments  in SQL:
+ -- single line comment
+ /* multiline 
+ comment*/
