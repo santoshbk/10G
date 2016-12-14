@@ -17,3 +17,4 @@ ALTER TABLE EMP ADD CONSTRAINT FK_1 FOREIGN KEY(DEPTNO) REFERENCES DEPT(DEPTNO);
 
 select * from tab; --list the available tables
 
+desc emp; -- describes the table
