@@ -1,0 +1,325 @@
+SQL> SELECT ENAME,HIREDATE,SYSDATE-HIREDATE
+  2  FROM EMP;
+
+ENAME      HIREDATE  SYSDATE-HIREDATE
+---------- --------- ----------------
+SMITH      17-DEC-80       13147.4731
+ALLEN      20-FEB-81       13082.4731
+WARD       22-FEB-81       13080.4731
+JONES      02-APR-81       13041.4731
+MARTIN     28-SEP-81       12862.4731
+BLAKE      01-MAY-81       13012.4731
+CLARK      09-JUN-81       12973.4731
+SCOTT      19-APR-87       10833.4731
+KING       17-NOV-81       12812.4731
+TURNER     08-SEP-81       12882.4731
+ADAMS      23-MAY-87       10799.4731
+JAMES      03-DEC-81       12796.4731
+FORD       03-DEC-81       12796.4731
+MILLER     23-JAN-82       12745.4731
+
+14 rows selected.
+
+
+SQL> SELECT ENAME,HIREDATE,SYSDATE-HIREDATE,(SYSDATE-HIREDATE)/30,MONTHS_BETWEEN(SYSDATE,HIREDATE)
+  2  "using function"
+  3  FROM EMP;
+
+ENAME      HIREDATE  SYSDATE-HIREDATE (SYSDATE-HIREDATE)/30 using function
+---------- --------- ---------------- --------------------- --------------
+SMITH      17-DEC-80       13147.4735            438.249117     431.950758
+ALLEN      20-FEB-81       13082.4735             436.08245     429.853984
+WARD       22-FEB-81       13080.4735            436.015783     429.789468
+JONES      02-APR-81       13041.4735            434.715783     428.434629
+MARTIN     28-SEP-81       12862.4735            428.749117     422.595919
+BLAKE      01-MAY-81       13012.4735            433.749117     427.466887
+CLARK      09-JUN-81       12973.4735            432.449117     426.208822
+SCOTT      19-APR-87       10833.4735            361.115783     355.886242
+KING       17-NOV-81       12812.4735             427.08245     420.950758
+TURNER     08-SEP-81       12882.4735            429.415783      423.24108
+ADAMS      23-MAY-87       10799.4735             359.98245      354.75721
+JAMES      03-DEC-81       12796.4735            426.549117     420.402371
+FORD       03-DEC-81       12796.4735            426.549117     420.402371
+MILLER     23-JAN-82       12745.4735            424.849117      418.75721
+
+14 rows selected.
+
+SQL> SELECT LAST_DAY(SYSDATE)
+  2  FROM DUAL;
+
+LAST_DAY(
+---------
+31-DEC-16
+
+SQL> SELECT NEXT_DAY(SYSDATE,'THU')
+  2  FROM DUAL;
+
+NEXT_DAY(
+---------
+22-DEC-16
+
+SQL> --FIND OUT 1ST FRIDAY DATE WITHIN THIS MONTH
+SQL> SELECT NEXT_DAY(LAST_DAY(ADD_MONTHS(SYSDATE,-1)),'FRI') "1ST FRIDAY"
+  2  FROM DUAL;
+
+1ST FRIDA
+---------
+02-DEC-16
+
+SQL> COL "WITHIN MONTH" FORMAT A20
+
+SQL> COL "WITHIN WEEK" FORMAT A20
+SQL> COL "WITHIN MONTH" FORMAT A20
+SQL> COL "WITHIN YEAR" FORMAT A20
+SQL> SELECT ROUND(SYSDATE) "WITHIN WEEK",ROUND(SYSDATE,'MONTH') "WITHIN MONTH",ROUND(SYSDATE,'YEAR') "WITHIN YEAR"
+  2  FROM DUAL;
+
+WITHIN WEEK          WITHIN MONTH         WITHIN YEAR
+-------------------- -------------------- --------------------
+15-DEC-16            01-DEC-16            01-JAN-17
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT TRUNC(SYSDATE) "WITHIN WEEK",TRUNC(SYSDATE,'MONTH') "WITHIN MONTH",TRUNC(SYSDATE,'YEAR') "WITHIN YEAR"
+  2* FROM DUAL
+SQL> /
+
+WITHIN WEEK          WITHIN MONTH         WITHIN YEAR
+-------------------- -------------------- --------------------
+15-DEC-16            01-DEC-16            01-JAN-16
+
+SQL> SELECT TO_CHAR(SYSDATE,'DY'),TO_CHAR(SYSDATE,'DAY')
+  2  FROM DUAL;
+
+TO_ TO_CHAR(S
+--- ---------
+THU THURSDAY
+
+SQL> --FIND EMPLOYEES JOINED ON WEDNESDAY
+SQL> SELECT ENAME,HIREDATE FROM EMP WHERE TO_CHAR(HIREDATE,'DAY')='WEDNESDAY';
+
+ENAME      HIREDATE
+---------- ---------
+SMITH      17-DEC-80
+
+SQL> SELECT ENAME,HIREDATE FROM EMP WHERE TO_CHAR(HIREDATE,'DY')='WED';
+
+ENAME      HIREDATE
+---------- ---------
+SMITH      17-DEC-80
+
+SQL> SELECT TO_CHAR(SYSDATE,'MON'),TO_CHAR(SYSDATE,'MONTH')
+  2  FROM DUAL;
+
+TO_ TO_CHAR(S
+--- ---------
+DEC DECEMBER
+
+SQL> --FIND EMPLOYEES JOINED IN SEPTEMBER
+SQL> SELECT ENAME,HIREDATE FROM EMP WHERE TO_CHAR(HIREDATE,'MONTH')='SEPTEMBER';
+
+ENAME      HIREDATE
+---------- ---------
+MARTIN     28-SEP-81
+TURNER     08-SEP-81
+
+SQL> SELECT TO_CHAR(SYSDATE,'YEAR'),TO_CHAR(SYSDATE,'YY'),TO_CHAR(SYSDATE,'YYYY')
+  2  FROM DUAL;
+
+TO_CHAR(SYSDATE,'YEAR')                    TO TO_C
+------------------------------------------ -- ----
+TWENTY SIXTEEN                             16 2016
+
+SQL> SELECT TO_CHAR(SYSDATE,'DDSPTH MONTH YEAR') FROM DUAL;
+
+TO_CHAR(SYSDATE,'DDSPTHMONTHYEAR')
+-------------------------------------------------------------------
+FIFTEENTH DECEMBER  TWENTY SIXTEEN
+
+SQL> SELECT TO_CHAR(SYSDATE,'MM') FROM DUAL;
+
+TO
+--
+12
+
+SQL> SELECT TO_CHAR(SYSDATE,'D') "WITHIN WEEK",
+  2  TO_CHAR(SYSDATE,'DD') "WITHIN MONTH",
+  3  TO_CHAR(SYSDATE,'DDD') "WITHIN YEAR"
+  4  FROM DUAL;
+
+WITHIN WEEK          WITHIN MONTH         WITHIN YEAR
+-------------------- -------------------- --------------------
+5                    15                   350
+
+SQL> --FIND EMPLOYEES JOINED IN LEAP YEAR
+SQL> SELECT ENAME,HIREDATE,MOD(TO_CHAR(HIREDATE,'YYYY'),4)
+  2  FROM EMP;
+
+ENAME      HIREDATE  MOD(TO_CHAR(HIREDATE,'YYYY'),4)
+---------- --------- -------------------------------
+SMITH      17-DEC-80                               0
+ALLEN      20-FEB-81                               1
+WARD       22-FEB-81                               1
+JONES      02-APR-81                               1
+MARTIN     28-SEP-81                               1
+BLAKE      01-MAY-81                               1
+CLARK      09-JUN-81                               1
+SCOTT      19-APR-87                               3
+KING       17-NOV-81                               1
+TURNER     08-SEP-81                               1
+ADAMS      23-MAY-87                               3
+JAMES      03-DEC-81                               1
+FORD       03-DEC-81                               1
+MILLER     23-JAN-82                               2
+
+14 rows selected.
+
+SQL> SELECT ENAME,HIREDATE FROM EMP
+  2  WHERE MOD(TO_CHAR(HIREDATE,'YYYY'),4)=0;
+
+ENAME      HIREDATE
+---------- ---------
+SMITH      17-DEC-80
+
+SQL> SELECT TO_CHAR(SYSDATE,'DDSPTH MONTH YEAR')
+  2  FROM DUAL;
+
+TO_CHAR(SYSDATE,'DDSPTHMONTHYEAR')
+-------------------------------------------------------------------
+FIFTEENTH DECEMBER  TWENTY SIXTEEN
+
+SQL> SELECT TO_CHAR(SYSDATE,'Q') "QUARTER",
+  2  TO_CHAR(SYSDATE,'W') "WITHIN WEEK",
+  3  TO_CHAR(SYSDATE,'WW') "WITHIN
+  4
+SQL> SELECT TO_CHAR(SYSDATE,'Q') "QUARTER",
+  2  TO_CHAR(SYSDATE,'W') "WITHIN MONTH",
+  3  TO_CHAR(SYSDATE,'WW') "WITHIN YEAR"
+  4  FROM DUAL;
+
+Q WITHIN MONTH         WITHIN YEAR
+- -------------------- --------------------
+4 3                    50
+
+SQL> --FIND OUT THE DAY ON WHICH INDIA BECAME INDEPENDENT
+SQL> SELECT TO_CHAR('15-AUG-47','DAY')
+  2  FROM DUAL;
+SELECT TO_CHAR('15-AUG-47','DAY')
+               *
+ERROR at line 1:
+ORA-01722: invalid number
+
+
+SQL> SELECT TO_CHAR(TO_DATE('15-AUG-47'),'DAY')
+  2  FROM DUAL;
+
+TO_CHAR(T
+---------
+THURSDAY
+
+SQL> SELECT TO_CHAR(TO_DATE('15-AUG-1947'),'DAY')
+  2  FROM DUAL;
+
+TO_CHAR(T
+---------
+FRIDAY
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
