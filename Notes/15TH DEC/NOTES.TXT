@@ -1,0 +1,192 @@
+DATE FUNCTIONS
+----------------
+SYSDATE
+ADD_MONTHS
+MONTHS_BETWEEN
+LAST_DAY
+NEXT_DAY
+ROUND
+TRUNC
+
+ CONVERSION  FUNCTIONS
+--------------------------
+ TO_CHAR => CONVERTS DATE INTO STRING
+ 
+ DY    => 3 LETTER DAY
+ DAY   => DAY FULLY SPELT
+ MON   => 3 LETTER MONTH
+ MONTH => MONTH FULLY SPELT
+ YEAR  => STRING YEAR
+ YY    => 2 DIGIT YEAR
+ YYYY  => 4 DIGIT YEAR
+ MM    => NUMERICAL MONTH
+ D     => WITHIN WEEK    
+ DD    => WITHIN MONTH
+ DDD   => WITHIN YEAR
+ Q     => QUARTER 
+ W     => WEEK NUMBER WITHIN MONTH
+ WW    => WEEK NUMBER WITHIN YEAR
+
+ TO_DATE=> CONVERTS STRING INTO  DATE
+
+
+ GENERAL FUNCTIONS
+------------------------
+ NVL   =>NVL(A,B)  IF A IS NULL RETURNS B ELSE A
+ NVL2   => NVL2(A,B,C) IF A IS NULL RETURNS C ELSE B
+ NULLIF  => NULLIF(A,B) IF A=B RETURNS NULL ELSE A
+ COALESCE => COALESCE(A,B,C) IF A IS NULL RETURNS B ELSIF (A,B) IS NULL
+             RETURNS C ELSE A
+
+ MULTIPLE ROW FUNCTIONS
+------------------------------
+  * AGGREGATE(GROUP) FUNCTIONS
+  COUNT
+  MIN
+  MAX
+  SUM
+  AVG
+
+
+ SET OPERATORS
+ ------------------
+  RULES
+ -----------
+  1. NUMBER OF COLUMNS SHOULD BE SAME IN ALL SELECT STATEMENTS
+
+  2. CORRESPONDING COLUMNS SHOULD HAVE SAME DATATYPE
+
+  TYPES
+--------------
+  UNION
+  UNION ALL
+  INTERSECT
+  MINUS
+
+
+  JOINS
+ ----------------
+  * TO SELECT DATA FROM MULTIPLE TABLES
+
+  ORACLE PROP. SYNTAX                     SQL-99 SYNTAX
+======================================================================
+  EQUI                                    INNER
+  OUTER                                   OUTER(L,R,F)
+  NON EQUI                                JOIN(DIFFERENT TABLE)
+  CARTESIAN                               CROSS
+  SELF                                    JOIN(SAME TABLE)
+                                          NATURAL
+                                          USING
+
+
+
+ RULES
+ -------------
+  * COLUMNS SHOULD HAVE THE FORMAT
+
+     E.ENAME    OR EMP.ENAME
+
+  * TYPE OF JOIN SHOULD BE SPECIFIED 
+
+  * JOIN CONDITION USES ON CLAUSE
+
+
+  EQUI(INNER) JOIN
+ ---------------------
+  * JOIN CONDITION USES = OPERATOR
+
+  * TABLES HAVING REFERENTIAL INTEGRITY 
+
+  OUTER JOIN=INNER JOIN + MISSING DATA
+
+
+ NON EQUI JOIN
+-------------------
+ * USES OTHER THAN = OPERATOR
+ 
+SELF JOIN
+---------------
+  * TABLE JOINED TO THE TABLE ITSELF
+
+
+
+
+
+ FIND OUT EMPLOYEES WORKING
+ IN RESEARCH AS CLERK
+ AND TAKING SALARIES MORE
+ THAN 950
+
+
+
+
+
+
+ SUBQUERIES
+-----------------
+  * SELECT INSIDE SELECT
+
+  * EVALUATING UNKNOWN THROUGH KNOWN
+
+  
+ RULES
+ -------------
+  1. SUBQUERY EXECUTES 1ST.
+
+  2. OUTPUT WILL BE USED BY MAIN QUERY AND GETS EXECUTED
+
+  3. SUBQUERY SHOULD BE ENCLOSED IN BRACKETS
+
+
+
+  TYPES
+ --------------
+  SINGLE ROW
+  MULTIPLE ROW
+  MULTIPLE COLUMN
+  NESTED
+  CORRELATED
+
+   SINGLE ROW SUBQUERY            MULTIPLE ROW SUBQUERY
+  ==============================================================
+  QUERY RETURNS SINGLE ROW        QUERY RETURNS MULTIPLE ROWS
+
+  =,>=,<=,<>                      IN,NOT IN,ANY,ALL
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
