@@ -1,0 +1,196 @@
+  CONNECTION :  SG
+
+  USERNAME   :  SG
+
+  PASSWORD   :  sg
+
+
+
+  HOSTNAME   :176.6.39.159
+
+
+  SID         : stanford
+
+
+ TOOLS FOR CONNECTING DATABASE
+ ---------------------------------
+  SQL DEVELOPER
+  SQL * PLUS
+  TOAD
+  SQL WORKSHEET
+  OEM
+  (CUSTOMIZED TOOLS)
+
+  SG
+--------------------
+  CREATE USER  RAMU IDENTIFIED BY RAMU;
+  GRANT CONNECT,RESOURCE TO RAMU;
+  GRANT SELECT ON SCOTT.DEPT TO RAMU;
+  GRANT SELECT ON SCOTT.EMP TO RAMU;
+  GRANT SELECT ON SCOTT.SALGRADE TO RAMU;
+
+ RAMU
+------------
+ CREATE TABLE DEPT AS SELECT * FROM SCOTT.DEPT;
+ CREATE TABLE EMP  AS SELECT * FROM SCOTT.EMP;
+ CREATE TABLE SALGRADE AS SELECT * FROM SCOTT.SALGRADE;
+ ALTER TABLE DEPT ADD PRIMARY KEY(DEPTNO);
+ ALTER TABLE EMP  ADD PRIMARY KEY(EMPNO);
+ ALTER TABLE EMP ADD CONSTRAINT FK_1 FOREIGN KEY(DEPTNO) REFERENCES
+ DEPT(DEPTNO);
+
+ COMMENTS
+----------------
+  -- SINGLE LINE
+
+ /*   */ MULTILINE 
+
+  SQL
+----------------
+  SELECT
+  DDL
+  DML
+  DCL
+  TC
+
+
+\\srvpardfs2\DFSRoot\Public-purged-every-7-days\sql
+
+
+
+ *   ALL COLUMNS
+
+ PROJECTION -> SPECIFIC COLUMNS
+
+ RESTRICTION(SELECTION)=> SELECTING SPECIFIC ROWS
+
+    * WHERE CLAUSE IS USED FOR RESTRICTION
+
+
+
+ OPERATORS USED WITH WHERE CLAUSE
+--------------------------------------
+  COMPARISON                =,>,>=,<,<=,<>(!=,^=)
+
+  LOGICAL                   AND,OR,NOT
+
+  SPECIAL                   IN,NOT IN,BETWEEN
+
+  PATTERN MATCH             LIKE,NOT LIKE
+
+  NULL                      IS NULL,IS NOT NULL
+
+
+ DISTINCT
+ -------------
+   * ELIMINATES DUPLICATES
+
+ CONCAT OPERATOR(||)
+------------------------
+  * TO CONCAT COLUMNS
+
+ DEFINE,UNDEFINE
+ --------------------
+ DEFINE A VARIABLE AND ASSOCIATE A VALUE TO IT.
+
+  DEFINE V_1=3000
+
+
+ SUBSTITUTION VARIABLE
+ -------------------------
+  & -> FOR TAKING USER INPUT
+
+ ORDER BY 
+---------------
+  * TO SORT DATA
+
+  * DEFAULT IS ASCENDING
+
+  ORDER BY SAL;
+  ORDER BY SAL ASC;
+  ORDER BY SAL DESC;
+
+
+ SQL FUNCTIONS
+---------------------------
+ SINGLE ROW                            MULTIPLE ROW
+
+ CHARACTER
+ NUMBER
+ DATE
+ CONVERSION
+ GENERAL 
+
+
+                CHARACTER FUNCTIONS
+-------------------------------------------------------------------
+ CASE MANIPULATION                       CHARACTER MANIPULATION
+=================================================================
+ UPPER                                   SUBSTR
+ LOWER                                   LENGTH
+ INITCAP                                 INSTR
+                                         TRIM
+                                         LPAD|RPAD
+                                         REPLACE
+                                         TRANSLATE
+
+ NUMBER FUNCTIONS
+----------------------
+ MOD
+ SIGN => COMPARING NUMBERS
+ ASCII 
+ CHR
+ ROUND
+ TRUNC
+ CEIL
+ FLOOR
+
+ DATE FUNCTIONS
+-------------------
+ SYSDATE
+ ADD_MONTHS
+
+
+
+
+
+
+
+
+
+ ASSIGNMENTS
+----------------------
+
+  FIND ENAME WHERE 1ST CHARACTER IS GETTING REPEATED
+
+  FIND NUMBER OF 'T' IN THE STRING 'TWINKLE TWINKLE LITTLE STAR'
+
+  REPLACE ONLY THE 3RD CHARACTER BY NUMBER 9 IN ALL ENAMES.
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
