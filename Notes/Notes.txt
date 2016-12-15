@@ -4,3 +4,69 @@ Comments  in SQL:
  -- single line comment
  /* multiline 
  comment*/
+
+
+* - all columns
+	select * from salgrade;
+
+projections -  select multiple columns
+	select dname, loc from dept;
+
+restriction(selection) -  select specific rows
+	- where clause is used for restriction
+	select * from dept where deptno=10;
+
+-- STRING,DATE DATATYPES SHOULD BE ENCLOSED IN SINGLE QUOTES
+-- Data is case sensitive but commands are not case sensitive
+
+Operators used in where clause:
+	- comparison:		=, >, >=, <, <=, <>(!=, ^=)
+	- Logical: 		AND, OR, NOT
+	- Special operators:	IN, NOT IN , BETWEEN
+	- Pattern match:	LIKE, NOT LIKE
+	- NULL should be used with IS not with = or !=
+
+DEFINE, UNDEFINE
+	-Defins a variable and associate a value to it
+	
+
+Substitution 
+	- use & for taking user input
+	- select * from emp where job='&job';
+
+Order by - 
+	* to sort data
+	- default is ASC
+	- order by sal ASC;
+	- order by sal;
+	-  order by sal DESC;
+
+SQL Functions:
+--------------------
+Single -
+-------------------- 
+- character
+	- case manupulation 
+	> upper - select upper('soc gen') "Upper Case" from dual;
+	> lower - select lower('SociEty GenErale') "Lower Case" from dual;
+	> initcap - select initcap('SociEty GenErale') "Camel Case" from dual;
+
+	- character manupulation
+	> SUBSTR - Takes 2 or 3 arguments
+		select substr('HelloWorld', 4) from dual; - displays from 4th char to end - loWorld
+		select substr('HelloWorld', 4, 2) from dual; - displays from 4th char and length 2 - lo
+	> length
+	> instr => to find position of specified character
+	> TRIM => TRIMS THE SPACES BOTH IN THE BEGINING AND AT THE END
+	> LPAD & RPAD
+	> REPLACE
+	> TRANSLATE
+	
+- number
+- date
+- conversion
+- general
+--------------------	
+Multiple - 
+--------------------
+
